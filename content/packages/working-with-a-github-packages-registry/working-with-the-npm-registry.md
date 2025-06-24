@@ -1,7 +1,15 @@
 ---
-title: Working with the npm registry
-intro: 'You can configure npm to publish packages to {% data variables.product.prodname_registry %} and to use packages stored on {% data variables.product.prodname_registry %} as dependencies in an npm project.'
-product: '{% data reusables.gated-features.packages %}'
+# Working with the npm registry
+## Table of Contents
+- [Authentication](#authenticating-to)
+- [Publishing a package](#publishing-a-package)
+- [Installing packages](#installing-a-package)
+
+
+intro: You can configure npm to:
+
+• publish packages to {% data variables.product.prodname_registry %}
+• use packages from {% data variables.product.prodname_registry %} as dependencies in your npm project.
 redirect_from:
   - /articles/configuring-npm-for-use-with-github-package-registry
   - /github/managing-packages-with-github-package-registry/configuring-npm-for-use-with-github-package-registry
@@ -28,7 +36,7 @@ If you access {% data variables.product.github %} at {% data variables.product.p
 If you access {% data variables.product.github %} at another domain, such as `octocorp.ghe.com`, replace "https://npm.pkg.github.com" with `https://npm.SUBDOMAIN.ghe.com`, where `SUBDOMAIN` is your enterprise's unique subdomain.
 
 {% endif %}
-
+<!-- New registry logic only for v2 of npm packages -->
 {% ifversion packages-npm-v2 %}
 {% else %}
 
@@ -147,6 +155,12 @@ You can use an `.npmrc` file to configure the scope mapping for your project. In
 1. Verify the name of your package in your project's `package.json`. The `name` field must contain the scope and the name of the package. For example, if your package is called "test", and you are publishing it to the "My-org" {% data variables.product.prodname_dotcom %} organization, the `name` field in your `package.json` should be `@my-org/test`.
 {% data reusables.package_registry.verify_repository_field %}
 {% data reusables.package_registry.publish_package %}
+
+🧾 Example: .npmrc configuration:
+@your-org:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+
+
 
 ### Publishing a package using `publishConfig` in the `package.json` file
 
